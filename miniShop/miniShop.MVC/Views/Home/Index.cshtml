@@ -1,0 +1,21 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Home Page";
+    var counter = 0;
+}
+
+<div class="row m-2">
+    @foreach (var product in Model)
+    {
+        if (counter != 0 && counter % 4 == 0)
+        {
+            @:</div>
+            @:<div class="row m-2">
+        }
+        <div class="col-3">
+            <partial name="_ProductSummary" model="product" ></partial>
+        </div>
+        counter++;
+    }
+
+</div>

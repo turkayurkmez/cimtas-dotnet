@@ -1,0 +1,13 @@
+﻿@model Product
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+<div class="card">
+    <img src="@Model.ImageUrl" alt="" class="img-fluid" />
+    <div class="card-body">
+        <p class="card-text">@Model.Name</p>
+        <p class="card-text">@Model.Description</p>
+        <p class="card-text">@Model.Price yerine @(Model.Price * (1 - Model.Discount))</p>
+        <button class="btn btn-success">Sepete ekle</button>
+    </div>
+</div>

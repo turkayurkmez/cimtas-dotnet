@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33516.290
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "introduceDotnetCore", "introduceDotnetCore\introduceDotnetCore.csproj", "{46FC0DAF-D297-49B6-A820-EC09C5FDA3D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{46FC0DAF-D297-49B6-A820-EC09C5FDA3D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FC0DAF-D297-49B6-A820-EC09C5FDA3D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FC0DAF-D297-49B6-A820-EC09C5FDA3D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FC0DAF-D297-49B6-A820-EC09C5FDA3D7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {269B674C-CB0C-46FE-8737-6BEB6369C8C9}
+	EndGlobalSection
+EndGlobal

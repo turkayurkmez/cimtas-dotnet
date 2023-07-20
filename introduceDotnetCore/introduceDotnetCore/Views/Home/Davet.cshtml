@@ -1,0 +1,23 @@
+﻿@model introduceDotnetCore.Models.UserResponse
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Davet</title>
+</head>
+<body>
+    <form asp-action="Davet" method="post">
+        <input asp-for="FullName" /><br />
+        <span asp-validation-for="FullName"></span><br />
+        <input asp-for="Email" /><br />
+        <span asp-validation-for="Email"></span><br />
+        <input asp-for="RequestDate" />
+        <button type="submit">Gönder</button>
+    </form>
+</body>
+</html>

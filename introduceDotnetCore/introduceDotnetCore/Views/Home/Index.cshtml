@@ -1,0 +1,37 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <h3>Burası, Home/Index sayfası</h3>
+    <p>Hoşgeldiniz @ViewBag.Name nasılsınız?</p>
+    <p>
+        @if (ViewBag.Hour >= 18)
+        {
+            <span>İyi Akşamlar</span>
+        }
+        else if (ViewBag.Hour >=12)
+        {
+            <span>İyi günler</span>
+
+        }
+        else
+        {
+            <span>Günaydın</span>
+
+        }
+    </p>
+
+    <p>
+        Partimize davetlisiniz. Formu doldurmak için <a asp-action="Davet" >tıklayınız</a> 
+    </p>
+</body>
+</html>

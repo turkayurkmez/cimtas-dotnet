@@ -1,20 +1,21 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using miniShop.Entities;
+using miniShop.Application.Services;
 
 namespace miniShop.MVC.ViewComponents
 {
     public class MenuViewComponent : ViewComponent
     {
+
+        private readonly ICategoryService categoryService;
+
+        public MenuViewComponent(ICategoryService categoryService)
+        {
+            this.categoryService = categoryService;
+        }
+
         public IViewComponentResult Invoke()
         {
-            var categories = new List<Category>()
-            {
-                new(){ Id=1, Name="Tişört"},
-                new(){ Id=2, Name="Ayakkabı"},
-                new(){ Id=3, Name="Mont"},
-                new(){ Id=4, Name="Çanta"}
-
-            };
+            var categories = this.categoryService.GetCategories();
             return View(categories);
         }
 

@@ -1,20 +1,21 @@
-﻿using miniShop.Application.Services;
-using miniShop.Infrastructure.Repositories;
-
+﻿using DILifeTime.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container (IoC).
+// Add services to the container.
+builder.Services.AddControllersWithViews();
+
 /*
  *   1. Singleton: Sadece 1 instance al. Hep onu kullan
  *   2. Transient Her seferinde instance al. Hep farklı kullan.
  *   3. Scoped: Instance başka bir nesnenin içinde olduğu sürece aynı o nesne dispose olursa farklı olsun.
  */
-builder.Services.AddControllersWithViews();
-builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductRepository, FakeProductRepository>();
-builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ICategoryRepository, FakeCategoryRepository>();
+
+builder.Services.AddSingleton<ISingletonGuid, SingletonGuid>();
+builder.Services.AddTransient<ITransientGuid, TransientGuid>();
+builder.Services.AddScoped<IScopedGuid, ScopedGuid>();
+
+builder.Services.AddScoped<GuidService>();
 
 var app = builder.Build();
 
@@ -32,11 +33,6 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
-app.MapControllerRoute(name: "categoryFilter",
-                       pattern: "Kategori/{catId?}",
-                       defaults: new { controller = "Home", action = "Index" }
-                       );
 
 app.MapControllerRoute(
     name: "default",

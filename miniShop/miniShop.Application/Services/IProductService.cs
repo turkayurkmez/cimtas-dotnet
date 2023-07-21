@@ -1,4 +1,6 @@
-﻿namespace miniShop.Application.Services
+﻿using miniShop.Entities;
+
+namespace miniShop.Application.Services
 {
     public interface IProductService
     {

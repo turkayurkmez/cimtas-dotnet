@@ -1,11 +1,11 @@
-﻿using miniShop.MVC.Models;
+﻿using miniShop.Entities;
 
-namespace miniShop.MVC.Services
+namespace miniShop.Infrastructure.Repositories
 {
-    public class ProductService : IProductService
+    public class FakeProductRepository : IProductRepository
     {
         private List<Product> products;
-        public ProductService()
+        public FakeProductRepository()
         {
             products = new List<Product>()
             {
@@ -20,12 +20,41 @@ namespace miniShop.MVC.Services
                 new(){ Id=9, Name="Falun", Description="Bla bbla", Price=100, Discount=0.15m, CategoryId=1},
                 new(){ Id=10, Name="Felün", Description="Bla bbla", Price=100, Discount=0.15m, CategoryId=4},
             };
+
         }
-        public List<Product> GetProducts()
+        public void Create(Product entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetAll()
         {
             return products;
         }
 
-        public List<Product> GetProductsByCategoryId(int id) => products.Where(p => p.CategoryId == id).ToList();
+        public Product GetEntityById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<Product> GetProductsByCategoryId(int categoryId)
+        {
+            return products.Where(p => p.CategoryId == categoryId);
+        }
+
+        public IEnumerable<Product> GetProductsByName(string productName)
+        {
+            return products.Where(p => p.Name.Contains(productName));
+        }
+
+        public void Update(Product entity)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,12 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TightlyVSLooselyCoupled
+﻿namespace TightlyVSLooselyCoupled
 {
-    internal class Oyuncu
+    public class Oyuncu
     {
+        public void Giy(IKiyafet kiyafet) { }
+    }
+
+    public interface IKiyafet
+    {
+
+    }
+
+    public class Ayakkabi : IKiyafet
+    {
+
+    }
+    public class UstGiyim : IKiyafet
+    {
+
+    }
+    public class Kazak : UstGiyim
+    {
+
+    }
+    public class KirmiziKazak : Kazak
+    {
+
     }
 }

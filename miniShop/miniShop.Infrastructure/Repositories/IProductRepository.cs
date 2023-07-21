@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using miniShop.Entities;
 
 namespace miniShop.Infrastructure.Repositories
 {
-    internal interface IProductRepository
+    public interface IProductRepository : IRepository<Product>
     {
+
+        IEnumerable<Product> GetProductsByName(string productName);
+        IEnumerable<Product> GetProductsByCategoryId(int categoryId);
+
     }
 }

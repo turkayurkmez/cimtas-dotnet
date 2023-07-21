@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using miniShop.Application.Services;
 using miniShop.MVC.Models;
-using miniShop.MVC.Services;
+
 using System.Diagnostics;
 
 namespace miniShop.MVC.Controllers

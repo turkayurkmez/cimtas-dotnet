@@ -1,10 +1,14 @@
-using miniShop.MVC.Services;
+using miniShop.Application.Services;
+using miniShop.Infrastructure.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddTransient<IProductService, ProductService>();
+builder.Services.AddTransient<IProductRepository, FakeProductRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

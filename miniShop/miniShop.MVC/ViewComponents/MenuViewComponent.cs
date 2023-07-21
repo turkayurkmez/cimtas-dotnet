@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using miniShop.MVC.Models;
+using miniShop.Entities;
 
 namespace miniShop.MVC.ViewComponents
 {

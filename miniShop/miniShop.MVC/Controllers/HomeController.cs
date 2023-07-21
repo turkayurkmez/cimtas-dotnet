@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using miniShop.MVC.Models;
+using miniShop.MVC.Services;
 using System.Diagnostics;
 
 namespace miniShop.MVC.Controllers
@@ -7,29 +8,43 @@ namespace miniShop.MVC.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly IProductService productService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IProductService productService)
         {
             _logger = logger;
+            this.productService = productService;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int pageNo = 1, int? catId = null)
         {
-            var products = new List<Product>()
-            {
-                new(){ Id=1, Name="Falan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=2, Name="Filan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=3, Name="Felan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=4, Name="Fulan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=5, Name="Fölan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=6, Name="Fülan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=7, Name="Fılan", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=8, Name="Felin", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=9, Name="Falun", Description="Bla bbla", Price=100, Discount=0.15m},
-                new(){ Id=10, Name="Felün", Description="Bla bbla", Price=100, Discount=0.15m},
-            };
+            //Bu metot, ProductService instance'ı olmadan ÇALIŞMAZ
+            //var productService = new ProductService();
 
-            return View(products);
+
+            var productsResult = catId.HasValue ? productService.GetProductsByCategoryId(catId.Value)
+                                                   :
+                                                  productService.GetProducts();
+
+            _logger.LogInformation($" {DateTime.Now} Index action'u üzerinde Veri servis aracılığı ile çekildi");
+
+            var totalProducts = productsResult.Count;
+            var pageSize = 4;
+            var totalPages = Math.Ceiling((decimal)totalProducts / pageSize);
+
+            /*
+             * 1. Sayfa, 0 atla 4 al
+             * 2. .....  4 atla 4 al
+             * 3 ......  8 atla 4 al
+             */
+            var paginatedProducts = productsResult.OrderBy(p => p.Id)
+                                            .Skip((pageNo - 1) * pageSize)
+                                            .Take(pageSize)
+                                            .ToList();
+
+            ViewBag.TotalPages = totalPages;
+            ViewBag.ActiveCategory = catId;
+            return View(paginatedProducts);
         }
 
         public IActionResult Privacy()
@@ -41,6 +56,11 @@ namespace miniShop.MVC.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Test()
+        {
+            return PartialView();
         }
     }
 }

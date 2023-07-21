@@ -10,5 +10,8 @@
 
         public string? ImageUrl { get; set; } = "https://cdn.dsmcdn.com/ty329/product/media/images/20220209/18/47636736/357341652/2/2_org.jpg";
 
+        public int CategoryId { get; set; }
+
+
     }
 }

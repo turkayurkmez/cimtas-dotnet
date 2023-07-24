@@ -16,6 +16,8 @@ builder.Services.AddScoped<IProductRepository, FakeProductRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, FakeCategoryRepository>();
 
+builder.Services.AddSession();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,7 +33,11 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseSession();
+
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(name: "categoryFilter",
                        pattern: "Kategori/{catId?}",

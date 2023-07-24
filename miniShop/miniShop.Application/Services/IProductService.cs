@@ -6,5 +6,6 @@ namespace miniShop.Application.Services
     {
         List<Product> GetProducts();
         List<Product> GetProductsByCategoryId(int id);
+        Product GetProductById(int productId);
     }
 }

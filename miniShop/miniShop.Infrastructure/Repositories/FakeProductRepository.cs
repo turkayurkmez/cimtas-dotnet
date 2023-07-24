@@ -39,7 +39,7 @@ namespace miniShop.Infrastructure.Repositories
 
         public Product GetEntityById(int id)
         {
-            throw new NotImplementedException();
+            return products.SingleOrDefault(p => p.Id == id);
         }
 
         public IEnumerable<Product> GetProductsByCategoryId(int categoryId)

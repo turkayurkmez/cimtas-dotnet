@@ -32,3 +32,20 @@
   
   </ul>
 </nav>
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $('.basket').on('click',function(){
+                let id = $(this).data('id');
+                $.ajax({
+                    url: '/ShoppingCart/AddCart/'+id,
+                    type:'GET',
+                    success:function(data){
+                        alert(data.message);
+                    }
+
+                });
+            })
+        });
+    </script>
+}

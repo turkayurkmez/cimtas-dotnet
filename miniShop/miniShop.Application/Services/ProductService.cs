@@ -12,6 +12,11 @@ namespace miniShop.Application.Services
             this.productRepository = productRepository;
         }
 
+        public Product GetProductById(int productId)
+        {
+            return productRepository.GetEntityById(productId);
+        }
+
         public List<Product> GetProducts()
         {
             return productRepository.GetAll().ToList();

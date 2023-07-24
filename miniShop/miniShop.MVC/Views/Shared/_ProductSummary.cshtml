@@ -8,6 +8,6 @@
         <p class="card-text">@Model.Name</p>
         <p class="card-text">@Model.Description</p>
         <p class="card-text">@Model.Price yerine @(Model.Price * (1 - Model.Discount))</p>
-        <button class="btn btn-success">Sepete ekle</button>
+        <button  class="btn btn-success basket" data-id="@Model.Id">Sepete ekle</button>
     </div>
 </div>

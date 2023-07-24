@@ -1,4 +1,6 @@
-﻿using miniShop.Application.Services;
+﻿using Microsoft.EntityFrameworkCore;
+using miniShop.Application.Services;
+using miniShop.Infrastructure.Data;
 using miniShop.Infrastructure.Repositories;
 
 
@@ -12,11 +14,14 @@ var builder = WebApplication.CreateBuilder(args);
  */
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductService, ProductService>();
-builder.Services.AddScoped<IProductRepository, FakeProductRepository>();
+builder.Services.AddScoped<IProductRepository, EFProductRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
-builder.Services.AddScoped<ICategoryRepository, FakeCategoryRepository>();
+builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
 
 builder.Services.AddSession();
+
+var connectionString = builder.Configuration.GetConnectionString("db");
+builder.Services.AddDbContext<MiniShopDbContext>(option => option.UseSqlServer(connectionString));
 
 var app = builder.Build();
 

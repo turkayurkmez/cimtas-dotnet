@@ -10,4 +10,12 @@
     <ProjectReference Include="..\miniShop.Entities\miniShop.Entities.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.9" />
+  </ItemGroup>
+
 </Project>

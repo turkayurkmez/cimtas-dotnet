@@ -8,5 +8,7 @@ namespace miniShop.Infrastructure.Repositories
         IEnumerable<Product> GetProductsByName(string productName);
         IEnumerable<Product> GetProductsByCategoryId(int categoryId);
 
+        IEnumerable<Product> GetProductsWithCategory();
+
     }
 }

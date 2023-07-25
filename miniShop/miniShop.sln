@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniShop.MVC", "miniShop.MVC\miniShop.MVC.csproj", "{0B829D6E-1CDF-4490-BF47-C6E0270B8572}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miniShop.MVC", "miniShop.MVC\miniShop.MVC.csproj", "{0B829D6E-1CDF-4490-BF47-C6E0270B8572}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniShop.Application", "miniShop.Application\miniShop.Application.csproj", "{3030E025-C67E-469E-8551-429DD35A4B99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miniShop.Application", "miniShop.Application\miniShop.Application.csproj", "{3030E025-C67E-469E-8551-429DD35A4B99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniShop.Entities", "miniShop.Entities\miniShop.Entities.csproj", "{4EC68320-0681-48AD-B2C0-887AE75CE173}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miniShop.Entities", "miniShop.Entities\miniShop.Entities.csproj", "{4EC68320-0681-48AD-B2C0-887AE75CE173}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniShop.Infrastructure", "miniShop.Infrastructure\miniShop.Infrastructure.csproj", "{37113DED-4C5B-4B9E-BE32-35F8E6DA182F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "miniShop.Infrastructure", "miniShop.Infrastructure\miniShop.Infrastructure.csproj", "{37113DED-4C5B-4B9E-BE32-35F8E6DA182F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "miniShop.API", "miniShop.API\miniShop.API.csproj", "{90B6F381-47E2-4582-AA58-C1747E9D3281}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{37113DED-4C5B-4B9E-BE32-35F8E6DA182F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37113DED-4C5B-4B9E-BE32-35F8E6DA182F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37113DED-4C5B-4B9E-BE32-35F8E6DA182F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90B6F381-47E2-4582-AA58-C1747E9D3281}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B6F381-47E2-4582-AA58-C1747E9D3281}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B6F381-47E2-4582-AA58-C1747E9D3281}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B6F381-47E2-4582-AA58-C1747E9D3281}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using miniShop.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using miniShop.Entities;
 using miniShop.Infrastructure.Data;
 
 namespace miniShop.Infrastructure.Repositories
@@ -44,6 +45,12 @@ namespace miniShop.Infrastructure.Repositories
         public IEnumerable<Product> GetProductsByName(string productName)
         {
             return dbContext.Products.Where(p => p.Name.Contains(productName));
+        }
+
+        public IEnumerable<Product> GetProductsWithCategory()
+        {
+            return dbContext.Products.Include(p => p.Category).ToList();
+
         }
 
         public void Update(Product entity)

@@ -5,4 +5,8 @@
         <a asp-action="Index" asp-controller="Home" asp-route-catId="@category.Id" class="list-group-item list-group-item-action">@category.Name</a>
     }      
     
+    @if (User.IsInRole("Admin") || User.IsInRole("Editor"))
+    {
+        <a asp-action="Index" asp-controller="Products" asp-action="Index" class="list-group-item list-group-item-action">Ürün işlemleri</a>
+    }
 </div>

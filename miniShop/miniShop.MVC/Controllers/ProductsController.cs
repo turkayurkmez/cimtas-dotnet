@@ -6,7 +6,7 @@ using miniShop.Entities;
 
 namespace miniShop.MVC.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin,Editor")]
     public class ProductsController : Controller
     {
         private readonly IProductService productService;

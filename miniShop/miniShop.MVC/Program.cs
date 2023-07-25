@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.EntityFrameworkCore;
 using miniShop.Application.Services;
 using miniShop.Infrastructure.Data;
 using miniShop.Infrastructure.Repositories;
@@ -17,11 +18,20 @@ builder.Services.AddScoped<IProductService, ProductService>();
 builder.Services.AddScoped<IProductRepository, EFProductRepository>();
 builder.Services.AddScoped<ICategoryService, CategoryService>();
 builder.Services.AddScoped<ICategoryRepository, EFCategoryRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddSession();
 
 var connectionString = builder.Configuration.GetConnectionString("db");
 builder.Services.AddDbContext<MiniShopDbContext>(option => option.UseSqlServer(connectionString));
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(option =>
+                {
+                    option.LoginPath = "/Users/Login";
+                    option.ReturnUrlParameter = "nereyeGideyim";
+                    option.AccessDeniedPath = "/Users/AccessDenied";
+                });
 
 var app = builder.Build();
 
@@ -39,7 +49,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSession();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 

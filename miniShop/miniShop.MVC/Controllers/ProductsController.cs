@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using miniShop.Application.Services;
 using miniShop.Entities;
 
 namespace miniShop.MVC.Controllers
 {
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductService productService;
@@ -49,6 +51,7 @@ namespace miniShop.MVC.Controllers
         [HttpPost]
         public IActionResult Edit(int id, Product product)
         {
+
             if (ModelState.IsValid)
             {
                 productService.UpdateProduct(product);

@@ -17,5 +17,7 @@ namespace miniShop.Application.Services
         void DeleteProduct(int id);
         void UpdateProduct(Product product);
 
+        void UpdateProduct(UpdateProductRequest request);
+
     }
 }

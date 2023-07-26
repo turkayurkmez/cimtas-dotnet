@@ -1,4 +1,5 @@
-﻿using miniShop.Application.DataTransferObjects.Requests;
+﻿using AutoMapper;
+using miniShop.Application.DataTransferObjects.Requests;
 using miniShop.Application.DataTransferObjects.Responses;
 using miniShop.Entities;
 using miniShop.Infrastructure.Repositories;
@@ -8,10 +9,12 @@ namespace miniShop.Application.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository productRepository;
+        private readonly IMapper mapper;
 
-        public ProductService(IProductRepository productRepository)
+        public ProductService(IProductRepository productRepository, IMapper mapper)
         {
             this.productRepository = productRepository;
+            this.mapper = mapper;
         }
 
         public int CreateNewProduct(Product product)
@@ -22,15 +25,17 @@ namespace miniShop.Application.Services
 
         public int CreateNewProduct(CreateNewProductRequest createNewProductRequest)
         {
-            var product = new Product
-            {
-                CategoryId = createNewProductRequest.CategoryId,
-                Description = createNewProductRequest.Description,
-                Discount = createNewProductRequest.Discount,
-                ImageUrl = createNewProductRequest.ImageUrl,
-                Name = createNewProductRequest.Name,
-                Price = createNewProductRequest.Price
-            };
+            //var product = new Product
+            //{
+            //    CategoryId = createNewProductRequest.CategoryId,
+            //    Description = createNewProductRequest.Description,
+            //    Discount = createNewProductRequest.Discount,
+            //    ImageUrl = createNewProductRequest.ImageUrl,
+            //    Name = createNewProductRequest.Name,
+            //    Price = createNewProductRequest.Price
+            //};
+
+            var product = mapper.Map<Product>(createNewProductRequest);
 
             productRepository.Create(product);
             return product.Id;
@@ -87,6 +92,13 @@ namespace miniShop.Application.Services
             {
                 throw new ArgumentException("Ürün id'si bilinmiyor...");
             }
+
+        }
+
+        public void UpdateProduct(UpdateProductRequest request)
+        {
+            var product = mapper.Map<Product>(request);
+            productRepository.Update(product);
 
         }
     }

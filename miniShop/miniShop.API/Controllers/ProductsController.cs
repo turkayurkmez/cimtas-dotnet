@@ -53,5 +53,19 @@ namespace miniShop.API.Controllers
 
             return BadRequest(ModelState);
         }
+        [HttpPut("{id}")]
+        public IActionResult Update(int id, UpdateProductRequest productRequest)
+        {
+            //FileStream fileStream = null;
+            //GZipStream gZipStream = new GZipStream(fileStream, CompressionMode.Compress);
+            //CryptoStream cryptoStream = new CryptoStream(gZipStream,null, CryptoStreamMode.Write);
+
+            //1. id'si verilen ürün var mı?
+            //2. varsa productRequest Valid mi?
+            //3. uygunsa güncelle
+            //   değilse hata döndür
+            //   id'si verilen ürün yoksa 404 döndür.
+            return Ok();
+        }
     }
 }

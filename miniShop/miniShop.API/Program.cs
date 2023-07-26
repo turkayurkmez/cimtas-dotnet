@@ -1,7 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using miniShop.Application.MapProfile;
 using miniShop.Application.Services;
 using miniShop.Infrastructure.Data;
 using miniShop.Infrastructure.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +22,8 @@ builder.Services.AddScoped<IUserService, UserService>();
 
 var connectionString = builder.Configuration.GetConnectionString("db");
 builder.Services.AddDbContext<MiniShopDbContext>(option => option.UseSqlServer(connectionString));
+
+builder.Services.AddAutoMapper(typeof(MapProfileForEntities));
 
 var app = builder.Build();
 

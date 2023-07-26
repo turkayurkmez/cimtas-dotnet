@@ -17,6 +17,18 @@ builder.Services.AddScoped<IScopedGuid, ScopedGuid>();
 
 builder.Services.AddScoped<GuidService>();
 
+builder.Services.AddCors(option => option.AddPolicy("allow", builder =>
+{
+    //http://www.cimtas.com.tr
+    //https://www.cimtas.com.tr
+    //http://hr.cimtas.com.tr
+    //http://www.cimtas.com.tr:8075
+
+    builder.AllowAnyOrigin();
+    builder.AllowAnyMethod();
+    builder.AllowAnyHeader();
+}));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -31,6 +43,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
 
 app.UseAuthorization();
 

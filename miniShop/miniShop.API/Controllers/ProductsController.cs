@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using miniShop.API.Filters;
 using miniShop.Application.DataTransferObjects.Requests;
 using miniShop.Application.Services;
@@ -7,6 +8,7 @@ namespace miniShop.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+
     public class ProductsController : ControllerBase
     {
         private readonly IProductService productService;
@@ -26,6 +28,7 @@ namespace miniShop.API.Controllers
         }
 
         [HttpGet("{id:int}")]
+        [IsExists]
         public IActionResult Get(int id)
         {
             var product = productService.GetProductById(id);
@@ -44,6 +47,7 @@ namespace miniShop.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Create(CreateNewProductRequest productRequest)
         {
             if (ModelState.IsValid)

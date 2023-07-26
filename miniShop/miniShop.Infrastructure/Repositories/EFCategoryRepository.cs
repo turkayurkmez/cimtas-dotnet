@@ -36,6 +36,11 @@ namespace miniShop.Infrastructure.Repositories
             return dbContext.Categories.FirstOrDefault(c => c.Id == id);
         }
 
+        public bool IsExists(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Update(Category entity)
         {
             dbContext.Categories.Update(entity);

@@ -77,6 +77,11 @@ namespace miniShop.Application.Services
 
         }
 
+        public bool IsProductExists(int id)
+        {
+            return productRepository.IsExists(id);
+        }
+
         public List<Product> SearchByName(string name)
         {
             return productRepository.GetProductsByName(name).ToList();

@@ -12,6 +12,7 @@ namespace miniShop.Infrastructure.Repositories
         void Update(T entity);
         void Delete(int id);
 
+        bool IsExists(int id);
 
     }
 }

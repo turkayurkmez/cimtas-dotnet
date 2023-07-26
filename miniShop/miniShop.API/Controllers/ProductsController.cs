@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using miniShop.API.Filters;
 using miniShop.Application.DataTransferObjects.Requests;
 using miniShop.Application.Services;
 
@@ -54,18 +55,42 @@ namespace miniShop.API.Controllers
             return BadRequest(ModelState);
         }
         [HttpPut("{id}")]
+        [IsExists]
         public IActionResult Update(int id, UpdateProductRequest productRequest)
         {
-            //FileStream fileStream = null;
-            //GZipStream gZipStream = new GZipStream(fileStream, CompressionMode.Compress);
-            //CryptoStream cryptoStream = new CryptoStream(gZipStream,null, CryptoStreamMode.Write);
+
 
             //1. id'si verilen ürün var mı?
+            // if (productService.IsProductExists(id))
+            // {
             //2. varsa productRequest Valid mi?
-            //3. uygunsa güncelle
-            //   değilse hata döndür
+            if (ModelState.IsValid)
+            {
+                //3. uygunsa güncelle
+                productService.UpdateProduct(productRequest);
+                return Ok();
+            }
+            //değilse hata döndür
+            return BadRequest(ModelState);
+            //}
+
             //   id'si verilen ürün yoksa 404 döndür.
+            //return NotFound();
+        }
+
+        [HttpDelete("{id}")]
+        //[RangeExceptionFilter]
+        [IsExists]
+        public IActionResult Delete(int id)
+        {
+            //var number = 1;
+            //var test = number / 0;
+            //if (productService.IsProductExists(id))
+            //{
+            productService.DeleteProduct(id);
             return Ok();
+            //}
+            //return NotFound();
         }
     }
 }

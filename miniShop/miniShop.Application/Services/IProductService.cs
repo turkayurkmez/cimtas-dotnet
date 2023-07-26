@@ -18,6 +18,7 @@ namespace miniShop.Application.Services
         void UpdateProduct(Product product);
 
         void UpdateProduct(UpdateProductRequest request);
+        bool IsProductExists(int id);
 
     }
 }

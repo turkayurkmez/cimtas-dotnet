@@ -53,6 +53,11 @@ namespace miniShop.Infrastructure.Repositories
 
         }
 
+        public bool IsExists(int id)
+        {
+            return dbContext.Products.Any(p => p.Id == id);
+        }
+
         public void Update(Product entity)
         {
             //dbContext.Entry<Product>(entity).State = Microsoft.EntityFrameworkCore.EntityState.;
